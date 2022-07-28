@@ -16,6 +16,15 @@
         <%= msg %>
       </div>
     <% end %>
+    <% if current_player %>
+      <h2>Your factories</h2>
+      <ul>
+        <% Factory.kinds.each do |metal, _| %>
+          <% factory = current_player.send("#{metal}_factory") %>
+          <li><%= metal.capitalize %> (Level: <%= factory.level %>, Resources: <%= factory.resources %></li>
+        <% end %>
+      </ul>
+    <% end %>
     <%= yield %>
   </body>
 </html>

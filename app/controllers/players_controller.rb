@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
   private
 
   def player
-    @player ||= Player.find(params[:id])
+    @player ||= current_user
   end
 
   def all_players

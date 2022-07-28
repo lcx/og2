@@ -1,12 +1,4 @@
 <h1>Player <%= @player.email %></h1>
-<h2>Your factories</h2>
-<ul>
-  <% Factory.kinds.each do |metal, _| %>
-    <% factory = @player.send("#{metal}_factory") %>
-    <li><%= metal.capitalize %> (Level: <%= factory.level %>, Resources: <%= factory.resources %></li>
-  <% end %>
-</ul>
-
 <h2>Production rate</h2>
 <ul>
   <% Factory.kinds.each do |metal, _| %>
