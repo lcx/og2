@@ -4,7 +4,7 @@ class FactoriesController < ApplicationController
   def upgrade
     flash[:error] = 'You can only upgrade your own factory' if @factory.player != current_user
 
-    if @factory.can_upgrade?
+    if @factory.can_upgrade? && @factory.player == current_user
       @factory.upgrade
       flash[:notice] = 'Factory successfully upgraded'
     else
