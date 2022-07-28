@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
   private
 
   def player
-    @player ||= current_user
+    @player ||= current_player
   end
 
   def all_players
