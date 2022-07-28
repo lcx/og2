@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+gem 'devise'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.4', '>= 1.4.2'
 

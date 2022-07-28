@@ -9,13 +9,11 @@ RSpec.configure do |config|
   # end
 
   config.before :each, type: :system do
-    puts "Running headless" if headless
     url = if headless
             "http://#{ENV.fetch('SELENIUM_REMOTE_HOST', nil)}:4444/wd/hub"
           else
             'http://host.docker.internal:9515'
           end
-puts "created url #{url}"
     capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
       chromeOptions: {
         args: %w[headless disable-gpu no-sandbox disable-dev-shm-usage window-size=1536,752]
