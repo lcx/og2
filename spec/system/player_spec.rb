@@ -41,4 +41,30 @@ RSpec.describe 'Player', type: :system do
       end
     end
   end
+
+  context 'when player connects they will see the list of every player and their resrouces' do
+    let!(:player_susan) { create(:player, email: 'susan@example.com', level: 3) }
+    let!(:player_john) { create(:player, email: 'john@example.com', level: 4) }
+
+    before do
+      player_susan.iron_factory.update(resources: 10)
+      player_susan.copper_factory.update(resources: 20)
+      player_susan.gold_factory.update(resources: 30)
+      player_susan.reload
+
+      player_john.iron_factory.update(resources: 30)
+      player_john.copper_factory.update(resources: 10)
+      player_john.gold_factory.update(resources: 0)
+      player_john.reload
+      login(email: player.email)
+    end
+
+    it 'shows susans level and resources' do
+      expect(page).to have_content 'susan@example.com (Level: 3, Iron: 10, Copper: 20, Gold: 30)'
+    end
+
+    it 'shows john with level and resources' do
+      expect(page).to have_content 'john@example.com (Level: 4, Iron: 30, Copper: 10, Gold: 0)'
+    end
+  end
 end
