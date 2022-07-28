@@ -1,7 +1,32 @@
 <h1>Player <%= @player.email %></h1>
 <h2>Your factories</h2>
 <ul>
-  <li>Iron (Level: <%= @player.iron_factory.level %>, Resources: <%= @player.iron_factory.resources %>)</li>
-  <li>Copper (Level: <%= @player.copper_factory.level %>, Resources: <%= @player.copper_factory.resources %>)</li>
-  <li>Gold (Level: <%= @player.gold_factory.level %>, Resources: <%= @player.gold_factory.resources %>)</li>
+  <% Factory.kinds.each do |metal, _| %>
+    <% factory = @player.send("#{metal}_factory") %>
+    <li><%= metal.capitalize %> (Level: <%= factory.level %>, Resources: <%= factory.resources %></li>
+  <% end %>
+</ul>
+
+<h2>Production rate</h2>
+<ul>
+  <% Factory.kinds.each do |metal, _| %>
+    <% factory = @player.send("#{metal}_factory") %>
+    <% next if factory.factory_rate.nil? %>
+    <li><%= metal.capitalize %> production: <%= factory.factory_rate.production %>/s</li>
+  <% end %>
+</ul>
+
+<h2>Upgrade cost</h2>
+<ul>
+  <% Factory.kinds.each do |metal, _| %>
+    <% factory = @player.send("#{metal}_factory") %>
+    <% next if factory.factory_rate.nil? %>
+    <% upgrade_cost = JSON.parse(factory.factory_rate.upgrade_cost) %>
+    <li>
+      <%= metal.capitalize %> upgrade requirements:
+      <% upgrade_cost.each do |metal, amount| %>
+        <%= amount %> <%= metal.capitalize %>,
+      <% end %>
+    </li>
+  <% end %>
 </ul>

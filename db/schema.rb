@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_28_080909) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_28_093935) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_28_080909) do
     t.integer "kind"
     t.integer "level", default: 1
     t.integer "resources", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "factory_rates", force: :cascade do |t|
+    t.integer "level"
+    t.integer "kind"
+    t.integer "production"
+    t.integer "upgrade_duration"
+    t.json "upgrade_cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

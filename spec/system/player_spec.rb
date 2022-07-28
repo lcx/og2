@@ -67,4 +67,23 @@ RSpec.describe 'Player', type: :system do
       expect(page).to have_content 'john@example.com (Level: 4, Iron: 30, Copper: 10, Gold: 0)'
     end
   end
+
+  context 'when player checks production rate and upgrade' do
+    let!(:iron_factory_rate) { create(:factory_rate) }
+    let!(:iron_factory) { player.iron_factory }
+
+    before do
+      login(email: player.email)
+      sleep 1
+      visit player_path(player)
+    end
+
+    it 'show current production rate of iron' do
+      expect(page).to have_content 'Iron production: 10/s'
+    end
+
+    it 'shows upgrade cost for factory' do
+      expect(page).to have_content 'Iron upgrade requirements: 300 Iron, 100 Copper, 1 Gold,'
+    end
+  end
 end
