@@ -15,42 +15,25 @@ RSpec.describe 'Player', type: :system do
   end
 
   context 'when player checks profile' do
+    let(:iron_factory) { player.iron_factory }
+    let(:copper_factory) { player.copper_factory }
+    let(:gold_factory) { player.gold_factory }
+
     before do
+      iron_factory.update(level: 2, resources: 10)
+      copper_factory.update(level: 3, resources: 40)
+      gold_factory.update(level: 4, resources: 60)
       login(email: player.email)
+      visit player_path(player)
     end
 
-    context 'with iron factory' do
-      let(:iron_factory) { player.iron_factory }
-
-      before do
-        iron_factory.update(level: 3, resources: 40)
-        visit player_path(player)
-      end
-
+    context 'When players check profile should be able to see to the level of their factories' do
       it 'shows the iron factory, level and resources' do
-        expect(page).to have_content 'Iron (Level: 3, Resources: 40)'
-      end
-    end
-
-    context 'with copper factory' do
-      let(:copper_factory) { player.copper_factory }
-
-      before do
-        copper_factory.update(level: 3, resources: 40)
-        visit player_path(player)
+        expect(page).to have_content 'Iron (Level: 2, Resources: 10)'
       end
 
       it 'shows the copper factory, level and resources' do
         expect(page).to have_content 'Copper (Level: 3, Resources: 40)'
-      end
-    end
-
-    context 'with gold factory' do
-      let(:gold_factory) { player.gold_factory }
-
-      before do
-        gold_factory.update(level: 4, resources: 60)
-        visit player_path(player)
       end
 
       it 'shows the gold factory, level and resources' do
