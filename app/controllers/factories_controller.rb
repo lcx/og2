@@ -2,9 +2,7 @@ class FactoriesController < ApplicationController
   before_action :factory, only: [:upgrade]
 
   def upgrade
-    if @factory.player != current_user
-      flash[:error] = 'You can only upgrade your own factory'
-    end
+    flash[:error] = 'You can only upgrade your own factory' if @factory.player != current_user
 
     if @factory.can_upgrade?
       @factory.upgrade
@@ -17,6 +15,7 @@ class FactoriesController < ApplicationController
   end
 
   private
+
   def factory
     @factory = Factory.find(params[:id])
   end

@@ -14,6 +14,7 @@ class Factory < ApplicationRecord
     return true if upgrade_until.nil?
 
     return false if Time.zone.now < upgrade_until
+
     true
   end
 

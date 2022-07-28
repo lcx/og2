@@ -9,24 +9,24 @@
 # Iron factory
 FactoryRate.create(
   kind: :iron, level: 1, production: 10, upgrade_duration: 15,
-  upgrade_cost: { iron: 300, copper: 100, gold: 1}.to_json
+  upgrade_cost: { iron: 300, copper: 100, gold: 1 }.to_json
 )
 
 FactoryRate.create(
   kind: :iron, level: 2, production: 20, upgrade_duration: 30,
-  upgrade_cost: {iron: 800, copper: 250, gold: 2}.to_json
+  upgrade_cost: { iron: 800, copper: 250, gold: 2 }.to_json
 )
 
 # 40/s 60s 1600 iron, 500 copper, 4 gold
 FactoryRate.create(
   kind: :iron, level: 3, production: 40, upgrade_duration: 60,
-  upgrade_cost: {iron: 1600, copper: 500, gold: 4}.to_json
+  upgrade_cost: { iron: 1600, copper: 500, gold: 4 }.to_json
 )
 
 # 4 80/s 90s 3000 iron, 1000 copper, 8 gold
 FactoryRate.create(
   kind: :iron, level: 4, production: 80, upgrade_duration: 90,
-  upgrade_cost: {iron: 3000, copper: 1000, gold: 8}.to_json
+  upgrade_cost: { iron: 3000, copper: 1000, gold: 8 }.to_json
 )
 
 # 5 150/s 120s
