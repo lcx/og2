@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_28_073635) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_28_080909) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "factories", force: :cascade do |t|
+    t.integer "player_id"
+    t.integer "kind"
+    t.integer "level", default: 1
+    t.integer "resources", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "players", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_28_073635) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "level", default: 1
     t.index ["email"], name: "index_players_on_email", unique: true
     t.index ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
   end

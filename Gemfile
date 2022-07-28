@@ -53,6 +53,8 @@ end
 group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'pry'
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
   gem 'rubocop', require: false
   gem 'rubocop-performance', '~> 1.14', '>= 1.14.3'
@@ -64,4 +66,6 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'shoulda'
+  gem 'shoulda-matchers'
 end

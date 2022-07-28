@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Sign In', type: :system do
-  let!(:player) { create :player }
+  let(:player) { create :player }
 
   context 'when signing in player' do
     context 'when sign in is successful' do
