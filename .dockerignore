@@ -1,0 +1,36 @@
+# Ignore version control files:
+.git/
+.gitignore
+coverage/
+public/packs-test/
+storage/
+
+# Ignore docker and environment files:
+*Dockerfile
+docker-compose*.yml
+*.env
+development-entrypoint
+.dockerignore
+
+# Ignore log files:
+log/*.log
+
+# Ignore temporary files:
+tmp/
+
+# Ignore test files:
+.rspec
+Guardfile
+spec/
+
+# Ignore OS artifacts:
+**/.DS_Store
+.bundle/*
+config/master.key
+
+# Ignore DB
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/proddb/*.sqlite3
+/proddb/*.sqlite3-journal
+
